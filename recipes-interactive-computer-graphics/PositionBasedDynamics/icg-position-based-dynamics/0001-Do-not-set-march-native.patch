@@ -1,0 +1,32 @@
+From 5806cd19d42b9ec8212bc176fc81b3b9847b72e1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20M=C3=BCller?= <schnitzeltony@gmail.com>
+Date: Mon, 11 Jan 2021 21:15:51 +0100
+Subject: [PATCH] Do not set -march=native
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upstream-Status: Inappropriate [OE-specific]
+
+Signed-off-by: Andreas Müller <schnitzeltony@gmail.com>
+---
+ CMake/Common.cmake | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/CMake/Common.cmake b/CMake/Common.cmake
+index a61d49e..c78356d 100644
+--- a/CMake/Common.cmake
++++ b/CMake/Common.cmake
+@@ -43,9 +43,6 @@ endif (MSVC)
+ if (UNIX OR MINGW)
+     set(CMAKE_USE_RELATIVE_PATHS "1")
+     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG")
+-    # Set compiler flags for "release"
+-    set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -march=native")
+-	set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O3 -DNDEBUG -march=native") 
+ endif (UNIX OR MINGW)
+ if(MINGW)
+ 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O1 -Wa,-mbig-obj")
+-- 
+2.26.2
+
